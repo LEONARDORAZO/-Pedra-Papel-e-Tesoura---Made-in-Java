@@ -1,11 +1,14 @@
 import java.util.Scanner;
 
 public class PedraPapelTesoura {
+    public static int PontosJ = 0, PontosIA = 0;
     public static void main(String[]args){
-        while (true) {
-            JogarPPT();   
+       int rodada = 1;
+        while (rodada < 4) {
+            JogarPPT();
+            rodada += 1;   
         }
-        
+        System.out.println("placar :" + " JOGADOR - " + PontosJ + " |" + " IA - " + PontosIA);
     }
     
     public static void JogarPPT(){
@@ -16,16 +19,34 @@ public class PedraPapelTesoura {
 
         double EscolhaPPT = (Math.random()*3)+1;
         double Combate = Math.floor( EscolhaPPT);
-        String Combatee = String.valueOf(Combate);
-         if(escolha.contains("pedra") && Combate == 1){
-            System.out.println("voce venceu");
-         }else{
-            System.out.println("tu perdeu");
-         }
-              
-       }
-        
+        int CombatePpt = (int)Combate;
+
+    switch (CombatePpt) {
+        case 1:
+            if(escolha.contains("pedra") && Combate == 1){ System.out.println("você venceu"); PontosJ += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            if (escolha.contains("papel") && Combate == 1){ System.out.println("tu perdeu"); PontosIA += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            if(escolha.contains("tesoura") && Combate == 1){ System.out.println("tu perdeu"); PontosIA += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            break;
+        case 2:
+            if(escolha.contains("pedra") && Combate == 2){ System.out.println("tu perdeu"); PontosIA += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            if (escolha.contains("papel") && Combate == 2){ System.out.println("você venceu"); PontosJ += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            if(escolha.contains("tesoura") && Combate == 2){ System.out.println("tu perdeu"); PontosIA += 1; System.out.println("Placar :" + PontosJ + " VS " + PontosIA);}
+                break;
+        case 3: 
+            if(escolha.contains("pedra") && Combate == 3){ System.out.println("tu perdeu"); PontosIA += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            if (escolha.contains("papel") && Combate == 3){ System.out.println("tu perdeu"); PontosIA += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+            if(escolha.contains("tesoura") && Combate == 3){ System.out.println("você venceu"); PontosJ += 1; System.out.println("Placar : " + PontosJ + " VS " + PontosIA);}
+             break;
+        }
+     
+
+
+
+        }
+
 }
+        
+
 
 
 
